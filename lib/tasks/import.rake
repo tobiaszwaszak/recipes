@@ -6,7 +6,7 @@ namespace :json_import do
   task :import => :environment do
     start_time = Time.now
 
-    url = 'https://pennylane-interviewing-assets-20220328.s3.eu-west-1.amazonaws.com/recipes-en.json.gz'
+    url = "https://pennylane-interviewing-assets-20220328.s3.eu-west-1.amazonaws.com/recipes-en.json.gz"
     
     gz_data = URI.open(url)
     json_data = Zlib::GzipReader.new(gz_data).read
