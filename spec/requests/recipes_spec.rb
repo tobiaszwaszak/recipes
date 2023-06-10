@@ -1,5 +1,4 @@
 require "rails_helper"
-Rails.application.load_tasks
 
 RSpec.describe "Recipes", type: :request do
   describe "GET /recipes" do

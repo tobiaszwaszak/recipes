@@ -1,5 +1,4 @@
 require "rails_helper"
-Rails.application.load_tasks
 
 RSpec.describe 'JSON Import Task', type: :task do
   before do
