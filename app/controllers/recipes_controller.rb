@@ -1,7 +1,13 @@
 class RecipesController < ApplicationController
   def index
     recipes = []
-    recipes = Recipe.joins(:ingredients).where("ingredients.name LIKE ?", "%#{params[:name]}%") if params[:name]
+
+    if params[:ingredients]
+      recipes = Recipe.joins(:ingredients)
+        .where(params[:ingredients].map { |name| "ingredients.name LIKE ?" }.join(" OR "), *params[:ingredients].map { |name| "%#{name}%" })
+        .group("recipes.id")
+        .having("COUNT(DISTINCT ingredients.id) = ?", params[:ingredients].count)
+    end
     render json: recipes.to_json, status: :ok
   end
 end
