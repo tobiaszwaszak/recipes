@@ -6,16 +6,16 @@ RSpec.describe "Recipes", type: :request do
     let(:params) { {} }
 
     before do
-      json_file_path = Rails.root.join('spec', 'fixtures', 'files', 'recipes-en.json.gz')
+      json_file_path = Rails.root.join("spec", "fixtures", "files", "recipes-en.json.gz")
 
       stub_request(:get, "https://pennylane-interviewing-assets-20220328.s3.eu-west-1.amazonaws.com/recipes-en.json.gz")
         .to_return(body: File.open(json_file_path))
 
-      Rake::Task['json_import:import'].invoke
+      Rake::Task["json_import:import"].invoke
     end
 
     after do
-      Rake::Task['json_import:import'].reenable
+      Rake::Task["json_import:import"].reenable
     end
 
     it "returns status 200" do
