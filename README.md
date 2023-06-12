@@ -1,3 +1,5 @@
+The app is available on: https://weathered-sun-9681.fly.dev/
+
 you have to set envs or api url in `frontend-app/App.js:13`
 # build
 you need ruby 3.2.2
